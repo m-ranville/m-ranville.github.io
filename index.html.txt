@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game Idea Generator</title>
+</head>
+<body>
+
+    <h1>Game Idea Generator</h1>
+
+    <label for="genre">Select Genre:</label>
+    <select id="genre">
+        <!-- Add genre options here -->
+    </select>
+
+    <label for="gimmick">Select Gimmick:</label>
+    <select id="gimmick">
+        <!-- Add gimmick options here -->
+    </select>
+
+    <button onclick="generateGameIdea()">Generate Idea</button>
+
+    <div id="gameIdea"></div>
+
+    <script>
+        // Function to generate game idea
+        function generateGameIdea() {
+            // Get selected genre and gimmick
+            const selectedGenre = document.getElementById('genre').value;
+            const selectedGimmick = document.getElementById('gimmick').value;
+
+            // Call function to fetch AI-generated idea (explained in Step 3)
+            fetchAIGameIdea(selectedGenre, selectedGimmick);
+        }
+
+        // Function to fetch AI-generated game idea
+        async function fetchAIGameIdea(genre, gimmick) {
+            // Implement the logic to interact with an AI service (explained in Step 3)
+            // Display the generated idea in the #gameIdea div
+            document.getElementById('gameIdea').innerText = 'AI-generated game idea: ...';
+        }
+    </script>
+
+</body>
+</html>
