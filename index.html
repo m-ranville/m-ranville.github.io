@@ -25,23 +25,23 @@
 
 		 const apiKey = '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'; // Replace with your OpenAI API key
 
-    	 const response = await fetch('https://api.openai.com/v1/engines/davinci-codex/completions', {
-      	  method: 'POST',
-      	  headers: {
-       	     'Content-Type': 'application/json',
-       	     'Authorization': `Bearer ${apiKey}`,
-      	  },
-      	  body: JSON.stringify({
-      	      prompt: `Generate a video game idea set in the ${genre} genre with a central gimmick of ${gimmick}. The game should involve...`,
-      	      max_tokens: 150,  // Adjust as needed
-        }),
-    });
+		 const response = await fetch('https://api.openai.com/v1/engines/davinci-codex/completions', {
+					method: 'POST',
+					headers: {
+					'Content-Type': 'application/json',
+					'Authorization': `Bearer ${apiKey}`,
+				},
+				body: JSON.stringify({
+					prompt: `Generate a video game idea set in the ${genre} genre with a central gimmick of ${gimmick}. The game should involve...`,
+					max_tokens: 150,  // Adjust as needed
+				}),
+			});
 
-    const data = await response.json();
-    const generatedIdea = data.choices[0].text;
+			const data = await response.json();
+			const generatedIdea = data.choices[0].text;
 
-    // Display the generated idea in the #gameIdea div
-    document.getElementById('gameIdea').innerText = `AI-generated game idea: ${generatedIdea}`;
+			// Display the generated idea in the #gameIdea div
+			document.getElementById('gameIdea').innerText = `AI-generated game idea: ${generatedIdea}`;
 		}
     </script>
 
