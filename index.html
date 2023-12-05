@@ -12,11 +12,18 @@
     <label for="genre">Select Genre:</label>
     <select id="genre">
         <!-- Add genre options here -->
+	<option value="action-adventure">Action</option>
+	<option value="action RPG">Action RPG</option>
+	<option value="turn-based RPG">Turn-based RPG</option>
+	<option value="strategy RPG">Strategy RPG</option>
+	<option value="puzzle">Puzzle</option>
+	<option value="real-time strategy">Real-time Strategy</option>
     </select>
 
     <label for="gimmick">Select Gimmick:</label>
     <select id="gimmick">
         <!-- Add gimmick options here -->
+	<option value="one button">One Button</option>
     </select>
 
     <button onclick="generateGameIdea()">Generate Idea</button>
@@ -39,6 +46,28 @@
             // Implement the logic to interact with an AI service (explained in Step 3)
             // Display the generated idea in the #gameIdea div
             document.getElementById('gameIdea').innerText = 'AI-generated game idea: ...';
+
+   	 const apiKey = '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'; // Replace with your OpenAI API key
+
+    	const response = await fetch('https://api.openai.com/v1/engines/davinci-codex/completions', {
+      	  method: 'POST',
+      	  headers: {
+       	     'Content-Type': 'application/json',
+       	     'Authorization': `Bearer ${apiKey}`,
+      	  },
+      	  body: JSON.stringify({
+      	      prompt: `Generate a video game idea set in the ${genre} genre with a central gimmick of ${gimmick}. The game should involve...`,
+      	      max_tokens: 150,  // Adjust as needed
+        }),
+    });
+
+    const data = await response.json();
+    const generatedIdea = data.choices[0].text;
+
+    // Display the generated idea in the #gameIdea div
+    document.getElementById('gameIdea').innerText = `AI-generated game idea: ${generatedIdea}`;
+}
+
         }
     </script>
 
