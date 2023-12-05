@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Game Idea Generator</title>
 
-   <script>
+    <script>
         // Function to generate game idea
         function generateGameIdea() {
             // Get selected genre and gimmick
@@ -23,9 +23,9 @@
             // Display the generated idea in the #gameIdea div
             document.getElementById('gameIdea').innerText = 'AI-generated game idea: ...';
 
-   	 const apiKey = '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'; // Replace with your OpenAI API key
+		 const apiKey = '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'; // Replace with your OpenAI API key
 
-    	const response = await fetch('https://api.openai.com/v1/engines/davinci-codex/completions', {
+    	 const response = await fetch('https://api.openai.com/v1/engines/davinci-codex/completions', {
       	  method: 'POST',
       	  headers: {
        	     'Content-Type': 'application/json',
@@ -42,7 +42,7 @@
 
     // Display the generated idea in the #gameIdea div
     document.getElementById('gameIdea').innerText = `AI-generated game idea: ${generatedIdea}`;
-}
+    }
 
         }
     </script>
