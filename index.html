@@ -1,36 +1,6 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Game Idea Generator</title>
-</head>
-<body>
 
-    <h1>Game Idea Generator</h1>
-
-    <label for="genre">Select Genre:</label>
-    <select id="genre">
-        <!-- Add genre options here -->
-	<option value="action-adventure">Action-Adventure</option>
-	<option value="action RPG">Action RPG</option>
-	<option value="turn-based RPG">Turn-based RPG</option>
-	<option value="strategy RPG">Strategy RPG</option>
-	<option value="puzzle">Puzzle</option>
-	<option value="real-time strategy">Real-time Strategy</option>
-    </select>
-
-    <label for="gimmick">Select Gimmick:</label>
-    <select id="gimmick">
-        <!-- Add gimmick options here -->
-	<option value="one button">One Button</option>
-    </select>
-
-    <button onclick="generateGameIdea()">Generate Idea</button>
-
-    <div id="gameIdea"></div>
-
-    <script>
+   <script>
         // Function to generate game idea
         function generateGameIdea() {
             // Get selected genre and gimmick
@@ -70,6 +40,38 @@
 
         }
     </script>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game Idea Generator</title>
+</head>
+<body>
+
+    <h1>Game Idea Generator</h1>
+
+    <label for="genre">Select Genre:</label>
+    <select id="genre">
+        <!-- Add genre options here -->
+	<option value="action-adventure">Action-Adventure</option>
+	<option value="action RPG">Action RPG</option>
+	<option value="turn-based RPG">Turn-based RPG</option>
+	<option value="strategy RPG">Strategy RPG</option>
+	<option value="puzzle">Puzzle</option>
+	<option value="real-time strategy">Real-time Strategy</option>
+    </select>
+
+    <label for="gimmick">Select Gimmick:</label>
+    <select id="gimmick">
+        <!-- Add gimmick options here -->
+	<option value="one button">One Button</option>
+	<option value="one button">Permadeath</option>
+    </select>
+
+    <button onclick="generateGameIdea()">Generate Idea</button>
+
+    <div id="gameIdea"></div>
 
 </body>
 </html>
