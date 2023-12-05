@@ -1,50 +1,9 @@
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Game Idea Generator</title>
-
-    <script>
-        // Function to generate game idea
-        function generateGameIdea() {
-            // Get selected genre and gimmick
-            const selectedGenre = document.getElementById('genre').value;
-            const selectedGimmick = document.getElementById('gimmick').value;
-
-            // Call function to fetch AI-generated idea (explained in Step 3)
-            fetchAIGameIdea(selectedGenre, selectedGimmick);
-        }
-
-        // Function to fetch AI-generated game idea
-        async function fetchAIGameIdea(genre, gimmick) {
-            // Implement the logic to interact with an AI service (explained in Step 3)
-            // Display the generated idea in the #gameIdea div
-            document.getElementById('gameIdea').innerText = 'AI-generated game idea: ...';
-
-		 const apiKey = process.env.OPENAI_API_KEY; // Replace with your OpenAI API key
-
-		 const response = await fetch('https://api.openai.com/v1/engines/davinci-codex/completions', {
-					method: 'POST',
-					headers: {
-					'Content-Type': 'application/json',
-					'Authorization': `Bearer ${apiKey}`,
-				},
-				body: JSON.stringify({
-					prompt: `Generate a video game idea set in the ${genre} genre with a central gimmick of ${gimmick}. The game should involve...`,
-					max_tokens: 150,  // Adjust as needed
-				}),
-			});
-
-			const data = await response.json();
-			const generatedIdea = data.choices[0].text;
-
-			// Display the generated idea in the #gameIdea div
-			document.getElementById('gameIdea').innerText = `AI-generated game idea: ${generatedIdea}`;
-		}
-    </script>
-
 </head>
 <body>
 
@@ -53,24 +12,47 @@
     <label for="genre">Select Genre:</label>
     <select id="genre">
         <!-- Add genre options here -->
-	<option value="action-adventure">Action-Adventure</option>
-	<option value="action RPG">Action RPG</option>
-	<option value="turn-based RPG">Turn-based RPG</option>
-	<option value="strategy RPG">Strategy RPG</option>
-	<option value="puzzle">Puzzle</option>
-	<option value="real-time strategy">Real-time Strategy</option>
+        <option value="action">Action</option>
+        <option value="adventure">Adventure</option>
+        <option value="strategy">Strategy</option>
     </select>
 
     <label for="gimmick">Select Gimmick:</label>
     <select id="gimmick">
         <!-- Add gimmick options here -->
-	<option value="one button">One Button</option>
-	<option value="one button">Permadeath</option>
+        <option value="time-travel">Time Travel</option>
+        <option value="gravity-manipulation">Gravity Manipulation</option>
+        <option value="stealth">Stealth</option>
     </select>
 
     <button onclick="generateGameIdea()">Generate Idea</button>
 
     <div id="gameIdea"></div>
+
+    <script>
+        async function generateGameIdea() {
+            const selectedGenre = document.getElementById('genre').value;
+            const selectedGimmick = document.getElementById('gimmick').value;
+
+            try {
+                const response = await fetch('/generate-idea', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ genre: selectedGenre, gimmick: selectedGimmick }),
+                });
+
+                const data = await response.json();
+                const generatedIdea = data.idea;
+
+                document.getElementById('gameIdea').innerText = `AI-generated game idea: ${generatedIdea}`;
+            } catch (error) {
+                console.error('Error:', error);
+                alert('Error generating game idea. Please try again.');
+            }
+        }
+    </script>
 
 </body>
 </html>
