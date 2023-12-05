@@ -23,7 +23,7 @@
             // Display the generated idea in the #gameIdea div
             document.getElementById('gameIdea').innerText = 'AI-generated game idea: ...';
 
-		 const apiKey = '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'; // Replace with your OpenAI API key
+		 const apiKey = process.env.OPENAI_API_KEY; // Replace with your OpenAI API key
 
 		 const response = await fetch('https://api.openai.com/v1/engines/davinci-codex/completions', {
 					method: 'POST',
