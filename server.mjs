@@ -1,12 +1,18 @@
-const express = require('express');
-const fetch = require('node-fetch');
-require('dotenv').config();
+// Import the required modules using the ESM syntax
+import express from 'express';
+import fetch from 'node-fetch';
+import dotenv from 'dotenv';
 
+// Load environment variables from .env file
+dotenv.config();
+
+// Create an Express application
 const app = express();
 const port = process.env.PORT || 3000;
 
 app.use(express.json());
 
+// Define the endpoint for generating ideas
 app.post('/generate-idea', async (req, res) => {
     const apiKey = process.env.OPENAI_API_KEY;
     const { genre, gimmick } = req.body;
@@ -34,6 +40,7 @@ app.post('/generate-idea', async (req, res) => {
     }
 });
 
+// Start the Express server
 app.listen(port, () => {
     console.log(`Server is running on port ${port}`);
 });
